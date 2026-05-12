@@ -20,7 +20,9 @@ variables.imageList.addEventListener('dragstart', (event) => {
 })
 
 variables.imageList.addEventListener('dragend', () => {
-  draggedCard.classList.remove('selected');
+  if (draggedCard) {
+    draggedCard.classList.remove('selected');
+  }
   variables.coordinatesDisplay.classList.add('hidden');
   draggedCard = undefined;
 })
@@ -38,6 +40,7 @@ variables.previewArea.addEventListener('drop', (e) => {
   const activeCard = document.querySelector('.active');
   if (activeCard) activeCard.classList.remove('active');
   draggedCard.classList.add('active');
+  draggedCard.classList.remove('selected');
 
   const imageSrc = draggedCard.querySelector('img').src;
 
